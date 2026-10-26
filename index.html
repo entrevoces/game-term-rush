@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Term Rush — Catch it before it lands · ENTRE VOCES</title>
+<title>Term Rush — Catch the Rain · ENTRE VOCES</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Public+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -12,22 +12,22 @@
 <body>
 <header class="game-header">
   <a class="back-link" id="hubLink" href="https://entrevoces.github.io/">← Hub</a>
-  <div><h1>Term Rush</h1><p class="tagline">Equivalents rain. Catch the right one. Speed is a stage of mastery.</p></div>
+  <div><h1>Term Rush</h1><p class="tagline">Word-drops fall on the night market. Catch the true one.</p></div>
   <span id="syncBadge" class="pill pill-local">Local-only</span>
 </header>
 <main>
   <section id="screen-title" class="screen is-active">
     <div class="panel panel-hero">
-      <p class="kicker">Arcade · Rapid retrieval (Stage 6)</p>
-      <h2>The room will not wait for you to think in paragraphs.</h2>
-      <p>A term flashes. Four equivalents fall. Tap the true one before it lands — wrong catches and floor splats cost a life. Combos raise the rain. This is retrieval under pressure, the exact stage slow games cannot prove.</p>
-      <p id="titleContext" class="hint">Checking the rain…</p>
-      <button id="startBtn" class="btn btn-primary btn-large" type="button">Start the rain</button>
+      <p class="kicker">Arcade · fast hands, true words</p>
+      <h2>The storm speaks two languages. Your basket knows the difference.</h2>
+      <p>Slide the catcher along the street. A word calls from the awning — catch its true equivalent drop, dodge the neighbours. Every fourth drop is a meaning drop: it falls as a definition, and only its word belongs in the basket.</p>
+      <p id="titleContext" class="hint">Watching the clouds…</p>
+      <button id="startBtn" class="btn btn-primary btn-large" type="button">Step into the rain</button>
     </div>
   </section>
   <section id="screen-play" class="screen">
     <div class="hud"><span id="hudPrompt" class="pill pill-strong"></span><span id="hudScore" class="pill">Score 0</span><span id="hudCombo" class="pill">Combo ×1</span><span id="hudLives" class="pill"></span><span id="hudSpeed" class="pill"></span></div>
-    <div id="rainField" class="rain-field" aria-label="Falling equivalents — tap the correct one"></div>
+    <canvas id="game" width="960" height="540" aria-label="Term Rush — move the catcher, catch the true equivalent drop"></canvas>
     <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
     <div class="play-actions"><button id="quitBtn" class="btn btn-ghost" type="button">End run</button></div>
   </section>
@@ -39,7 +39,7 @@
     </div>
   </section>
 </main>
-<footer><p>Term Rush · ENTRE VOCES · Fast and right beats fast. Slow and right still counts — in the Atelier.</p></footer>
+<footer><p>Term Rush · ENTRE VOCES · Fast and right beats fast.</p></footer>
 <script type="module" src="game.js"></script>
 </body>
 </html>
