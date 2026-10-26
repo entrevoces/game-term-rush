@@ -43,7 +43,8 @@ function startRun() {
 function hud() { $("#hudScore").textContent = `Score ${run.score}`; $("#hudCombo").textContent = `Combo ×${run.combo}`; $("#hudLives").textContent = `Lives ${"●".repeat(run.lives)}${"○".repeat(3 - run.lives)}`; $("#hudSpeed").textContent = `Rain ${run.speed.toFixed(2)}×`; }
 function nextPrompt() {
   run.current = promptQueue.length ? promptQueue[(run.promptIdx = ((run.promptIdx || 0) + 1) % promptQueue.length)] : concepts[Math.floor(Math.random() * concepts.length)];
-  $("#hudPrompt").textContent = `${run.current.terms.en.term} → ?`;
+  run.meaningWave = (run.caught + run.missed) % 4 === 3;
+  $("#hudPrompt").textContent = run.meaningWave ? `“${run.current.definition.en}” → catch its word` : `${run.current.terms.en.term} → ?`;
   const wrongs = shuffle(concepts.filter((c) => c.conceptId !== run.current.conceptId).sort((a, b) => (b.areaIds[0] === run.current.areaIds[0]) - (a.areaIds[0] === run.current.areaIds[0]))).slice(0, 3).map(tgt);
   const labels = shuffle([tgt(run.current), ...wrongs]);
   labels.forEach((label, i) => spawn(label, label === tgt(run.current), i));
@@ -77,8 +78,8 @@ function catchDrop(el, gold) {
   const c = run.current;
   if (gold) {
     run.caught++; run.score += 100 * run.combo; run.combo = Math.min(8, run.combo + 1); run.best = Math.max(run.best, run.combo);
-    $("#feedback").textContent = "Caught clean."; $("#feedback").className = "feedback good";
-    engine.recordEvidence({ conceptId: c.conceptId, areaId: c.areaIds[0], gameId: "term-rush", activityType: "retrieval", stage: 6, languageDirection: `en->${targetLang}`, correct: true, score: 1, responseSummary: `Rush catch at combo ×${run.combo}` });
+    $("#feedback").textContent = run.meaningWave ? "Meaning caught — you knew what it was, not just its name." : ["Caught clean.", "Clean hands, fast heart.", "The rain respects you."][run.caught % 3]; $("#feedback").className = "feedback good";
+    engine.recordEvidence({ conceptId: c.conceptId, areaId: c.areaIds[0], gameId: "term-rush", activityType: run.meaningWave ? "conceptual" : "retrieval", ...(run.meaningWave ? { stage: 3 } : { stage: 6 }), languageDirection: `en->${targetLang}`, correct: true, score: 1, responseSummary: run.meaningWave ? "Rush meaning-wave catch (definition -> term)" : `Rush catch at combo ×${run.combo}` });
     run.drops.forEach((x) => { x.done = true; x.el.remove(); }); run.drops = [];
     hud(); setTimeout(nextPrompt, 350);
   } else {

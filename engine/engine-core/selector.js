@@ -147,7 +147,7 @@ export const GAME_CATALOG = [
   { gameId: "vocab-craft", name: "VocabCraft", verb: "MINE & BUILD", stages: [2, 5], promise: "Mine term-blocks, craft the bridge, walk across it." },
   { gameId: "neon-bastion", name: "Neon Bastion", verb: "SHOOT", stages: [2, 6], promise: "Platform-shooter retrieval: blast only the true-equivalent drone." },
   { gameId: "melon-reef", name: "Melon Reef", verb: "DIVE", stages: [1, 5], promise: "Underwater listening harvest — hear it, swim it, surface with it." },
-  { gameId: "loteria-aula", name: "Lotería de Aula", verb: "GATHER", stages: [1, 2], promise: "The classroom lotería: one caller, every board listening. Group play, stealth assessment." },
+  { gameId: "loteria-aula", name: "Lotería de Aula", verb: "GATHER", stages: [1, 2, 8], promise: "The classroom lotería: one caller, every board listening. Group play, stealth assessment." },
   { gameId: "milonga-sentido", name: "Milonga del Sentido", verb: "FEEL", stages: [3, 4, 8], promise: "Cultural translation of tango: carry the vibe, unlock the classics." },
 ];
 
