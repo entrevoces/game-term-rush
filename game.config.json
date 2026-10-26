@@ -1,0 +1,22 @@
+{
+  "gameId": "term-rush",
+  "label": "Term Rush",
+  "domainIds": [
+    "oregon-medical",
+    "oregon-legal",
+    "ontario-real-estate",
+    "oregon-cultivation",
+    "california-tax",
+    "ai-technology"
+  ],
+  "competences": [
+    "cognitive-interpreting",
+    "bilingual-terminology"
+  ],
+  "stages": [
+    6
+  ],
+  "engineUrl": "http://127.0.0.1:8787",
+  "offlineSeed": "concepts-subset.json",
+  "version": 1
+}
